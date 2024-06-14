@@ -1,0 +1,29 @@
+//base
+@import "base/colours.scss";
+@import "base/fonts.scss";
+@import "base/breakpoints.scss";
+
+//components
+@import "base/skeleton.scss";
+@import "base/loading.scss";
+@import "base/inputs.scss";
+@import "base/buttons.scss";
+@import "base/layout.scss";
+@import "base/modal.scss";
+
+//pages
+@import "pages/home.scss";
+@import "pages/analytics.scss";
+@import "pages/search.scss";
+@import "pages/auth.scss";
+@import "pages/compare.scss";
+
+body {
+  margin: 0;
+}
+
+button {
+  &:hover {
+    cursor: pointer;
+  }
+}

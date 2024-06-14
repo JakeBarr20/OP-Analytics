@@ -1,0 +1,115 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+
+  .container-mobile {
+    width: 100%;
+  }
+
+  .navbar-container {
+    width: 170px;
+    height: 100%;
+    border: 1px solid $grey;
+    margin-right: 20px;
+    border-radius: 8px;
+    padding: 14px;
+
+    .nav-header {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 30px;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .nav-content {
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+
+      .navbar-link {
+        display: flex;
+
+        &:hover {
+          img {
+            filter: invert(51%) sepia(33%) saturate(1918%) hue-rotate(316deg)
+              brightness(103%) contrast(103%);
+          }
+
+          p {
+            text-decoration: underline;
+            color: $primary-red;
+          }
+        }
+
+        p {
+          margin: 0 0 0 27px;
+          display: flex;
+          align-items: center;
+        }
+      }
+
+      .navbar-link-mobile {
+        hr {
+          display: none;
+        }
+
+        &:hover {
+          img {
+            filter: invert(51%) sepia(33%) saturate(1918%) hue-rotate(316deg)
+              brightness(103%) contrast(103%);
+          }
+
+          hr {
+            display: block;
+            color: $primary-red;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: $mobile) {
+    margin: 10px !important;
+  }
+
+  @media screen and (max-width: $mobile) {
+    margin: 0px !important;
+  }
+
+  @media screen and (max-width: $mobile) {
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    height: 107vh;
+
+    .container-mobile {
+      margin: 0 10px;
+    }
+
+    .navbar-container {
+      &.mobile {
+        border-top: 1px solid $grey;
+        height: 50px;
+        width: 100%;
+      }
+
+      .nav-header {
+        &.mobile {
+          display: none;
+        }
+      }
+
+      .nav-content {
+        &.mobile {
+          flex-direction: row;
+          justify-content: space-evenly;
+        }
+      }
+    }
+  }
+}

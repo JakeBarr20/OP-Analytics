@@ -1,0 +1,85 @@
+.auth-container {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+
+  h1 {
+    font-size: 64px;
+    margin-bottom: 45px;
+    text-align: center;
+  }
+
+  label {
+    font-family: ubuntu-medium;
+  }
+
+  .auth-left-side {
+    padding-top: 170px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+
+    &.signup {
+      padding-top: 10px !important;
+    }
+
+    .auth-input-container {
+      display: flex;
+      flex-direction: column;
+      width: 660px;
+    }
+
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      height: 600px;
+      column-gap: 30px;
+
+      input {
+        margin-bottom: 30px;
+        max-width: 310px;
+      }
+
+      select {
+        height: 52px;
+        max-width: 316px;
+        margin-bottom: 30px;
+      }
+    }
+
+    .login-input {
+      width: 100%;
+      max-width: 660px !important;
+      margin-bottom: 35px;
+    }
+
+    .auth-button {
+      max-width: 480px;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+  }
+
+  .auth-right-side {
+    padding-top: 170px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 30%;
+    background-color: $primary-red;
+    height: 100vh;
+
+    h1 {
+      width: 70%;
+    }
+
+    button {
+      max-width: 305px;
+    }
+  }
+}

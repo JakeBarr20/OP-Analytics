@@ -1,0 +1,19 @@
+$desktop-large: 1440px;
+$desktop-medium: 1340px;
+$desktop-small: 1240px;
+$tablet: 991px;
+$phablet: 767px;
+$mobile-large: 649px;
+$mobile: 499px;
+$mobile-small: 399px;
+
+:export {
+  desktop-large: $desktop-large;
+  desktop-medium: $desktop-medium;
+  desktop-small: $desktop-small;
+  tablet: $tablet;
+  phablet: $phablet;
+  mobile-large: $mobile-large;
+  mobile: $mobile;
+  mobilesmall: $mobile-small;
+}
