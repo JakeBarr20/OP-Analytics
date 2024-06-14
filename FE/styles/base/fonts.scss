@@ -1,0 +1,81 @@
+@font-face {
+  font-family: poppins-light;
+  src: url("../../assets/fonts/Poppins-light.ttf");
+}
+
+@font-face {
+  font-family: poppins-medium;
+  src: url("../../assets/fonts/Poppins-medium.ttf");
+}
+
+@font-face {
+  font-family: bebas-neue;
+  src: url("../../assets/fonts/BebasNeue-Regular.ttf");
+}
+
+@font-face {
+  font-family: ubuntu-bold;
+  src: url("../../assets/fonts/Ubuntu-Regular.ttf");
+}
+
+@font-face {
+  font-family: ubuntu-medium;
+  src: url("../../assets/fonts/Ubuntu-regular.ttf");
+}
+
+@font-face {
+  font-family: ubuntu-light;
+  src: url("../../assets/fonts/Ubuntu-light.ttf");
+}
+
+.ubuntu-bold {
+  font-family: ubuntu-bold;
+}
+
+.ubuntu-medium {
+  font-family: ubuntu-medium;
+
+  &.red {
+    color: $primary-red;
+  }
+
+  &.white {
+    color: $white;
+  }
+}
+
+.ubuntu-light {
+  font-family: ubuntu-light;
+}
+
+.bebas-neue {
+  font-family: bebas-neue;
+
+  &.red {
+    color: $primary-red;
+  }
+
+  &.dark {
+    color: $hover-red;
+  }
+
+  &.white {
+    color: $white;
+  }
+}
+
+.poppins-light {
+  &.grey {
+    color: $grey;
+  }
+
+  font-family: poppins-light;
+}
+
+.poppins-medium {
+  &.grey {
+    color: $grey;
+  }
+
+  font-family: poppins-medium;
+}

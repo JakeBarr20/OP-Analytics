@@ -1,0 +1,25 @@
+$primary-red: #ef303d;
+$accent-red: #facfcf;
+$hover-red: #d7212d;
+
+$black: #000000;
+$grey: #ccd2e3;
+$white: #ffffff;
+$hover-white: #e4e3e3;
+
+$background-gradient: linear-gradient(
+  160deg,
+  #ef303d 4.66%,
+  rgba(217, 217, 217, 0) 38.09%
+);
+
+:export {
+  primary-red: $primary-red;
+  accent-red: $accent-red;
+  hover-red: $hover-red;
+  black: $black;
+  grey: $grey;
+  white: $white;
+  background-gradient: $background-gradient;
+  hover-white: $hover-white;
+}

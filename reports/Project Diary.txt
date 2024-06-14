@@ -1,0 +1,143 @@
+Project Diary
+
+Week 1 ->
+I have been researching the technologies I want to use in more depth, specifically Next.js and Storybook. For Storybook I have been watching youtube tutorials and for Next.js I have purhcased a course on Udemy.
+
+Week 2 -> 
+I continued my research into Next.js and Storybook. I have decided that Storybook might not provide much value to the project. After further research it seems that it is suited for larger enterprise projects with bigger teams that include many reusable components. Although I plan to use reusable components, my library will not be at the scale to make efficient use of the tool.
+
+I also gained access to the repo locally and online, beginning to make my first few commits which have been mainly based on: project structure, dependencies, README and removing the clutter of initialising a Next.js project.
+
+After looking into the authentication system, I have decided to use Firebase by Google alongside Next Auth to manage users and their respective information.
+
+Week 3 -> 
+I have almost finished all of my Next.js course, now I believe I have the knowledge to successfully optimise the server side rendering capabilities of Next.js. 
+
+I spent most of the week designing creating the designs for the account, homepage and comparison. The comparison was the trickiest as it had multiple stages, 4 possible screen states. I utalised some free graphics I found online called undraw, they are quite minimalstic and use the same colour scheme of the website. These are all however, subject to change there are some small tweaks I will make in the future for consistency purposes.
+
+Week 4 -> 
+Most of my time this week was spent completing the designs for the login, sign up, search and landing pages. These pages less complicated than last week as there were fewer possible states, I utalised the same tools as last week to create these designs.
+
+Week 5 -> 
+This week was focussed around finalising designs and the layout such as navbars etc and ensuring they are responsive to any screen size. The main idea of this week was to be a buffer week to allow for any unforseen priority tasks.
+
+Week 6 -> 
+This was the first week of programming, I created the navbar for both desktop and mobile resolutions, the buttons, the layout component/ wrapper and some of the routing to different pages.
+
+The hardest part of this week was completing part of the Layout component. As the way that I implemented the container was not working smoothly with the navbar so had to be readjusted which was not necessarily complicated, just tedious.
+
+Week 7 -> 
+This week was focussed around creating a proof of concept for connecting to the Open Powerlifting API. I initially used the connect fetch function and just entered the URL for the API however, I was recieving CORS errors preventing me from accessing the response.
+
+CORS is a security measure on web browsers to prevent unauthorised access to resources from a different domain. In this case the creators of the API I am trying to access could have just forgotten to add a single line of code to allow this as other platforms use this API and it works correctly.
+
+To overcome this I needed to create a proxy server, I would then forward my API requests through this proxy which would solve the domain issue. I managed to set this up and now I can access the required resources through the API. 
+
+I set up the server using Express which is a small Node.js framework. This allowed me to access request information I send to the proxy so I can inject varibales into the API URL.
+
+Week 8 -> 
+This week I was focussing on how to create the averages for the comparison module. To do this I wanted to further extend the limits of the API but during this I came across another issue.
+
+The API structure includes a start index and an end index so I assumed I could request the amount of data I required, however the API is limited to only 100 lifters no matter the start and end limit.
+
+My solution to this was to make a certain amount of requests and create samples of lifters in certain increments as they are returned in order of strength. This means the average should theoretically not change much. The question then became, what is the increment and how would that affect the average.
+
+93kg fully tested full power men -> 40,000 results
+Testing increments against the total of these lifters
+Actual average = 540
+
+Increments of 1000 -> 548, 22seconds
+Increments of 2000 -> 556, 12seconds
+Increments of 5000 -> 569, 6seconds
+Increments of 6000 -> 565, 4-6seconds
+Increments of 7000 -> 573, 4-6seconds
+Increments of 8000 -> 592, 4-6seconds
+Increments of 9000 -> 570, 4-6seconds
+Increments of 10000 -> 607, 4seconds
+
+Best case, is increments of 5000. This is because the average has only increased by 5% and results in a 6 second render of the data.
+
+In the future, after further tests I could begin to offset this small increase.
+
+Week 9 -> 
+This week I created the full homepage, this is a relatively simple page. It just contains the links to the other pages and a description of what each page is for.
+
+I then created the static analytics page, this page is more complex including a form and the rating bars. This page challenged my styling skills a lot further as I included animations, the bars would also need to extend up to points relevant to a users lifts.
+
+To have the styling react in this way, I needed to learn a new tool called styled components. These are a powerful tool that lets me inject variables into a string containing all the styling code via object literals. This for example would let me set the width of the bar dependent on their score out of 100.
+
+christmas break -> 
+over the christmas break I have decided to work on some additional functionality to give myself time to either add additional features at the end of term 2 or to polish off what I already have.
+
+The first thing I wanted to do was to creating the rest of the static pages. This included auth, landing and compare. The compare page needed the most work as it included 4 different large components. The choice, single submit, group submit and the final comparison graph. Luckily the skills I learnt creating the other graph components could be applied to this and the UI did not take too long to build with static data. 
+
+Next up I updated some components such as the arc component on the analytics to make it match my design. I also implemenmted the routing for the website so I can easily access all the pages through the designed flow. As I used Next.js this was very simple to implement, much easier that I originally intended.
+
+The last part of the christmas break was to get started on the authentication system. I set up my project on the firebase UI and created the sign in and sign up logic for the project. I did this by creating a context provider so I can always detect if the user is logged in. Once the account was created I link a document via the unique generated user ID so I can then access all their information such as bench press or squat 
+
+whilst working on the authentication system, I realised that there would be some cases where skelton loading is not practical. An example would be signing in, there is about 4 seconds where once the user has selected the button and they actually sign in so I made a quick loading spinner to indicate to the user that they are being signed in.
+
+Week 10 -> 
+This week, I finalized the authentication system. I added a modal that displays the error message for any authentication errors, I restricted pages if a user is not authenticated, I added a logout feature to the navbar.
+
+The next part of the week was looking into redux, I started building the store the same way I did in my placement however I decided to update this to the set up recommended by redux for a Next and Typescript project as my placement was just react.
+
+I have created a default store and now can collect values from it when needed.
+
+Week 11 -> 
+This week, I modified the redux store to update itself with the matching user information from firebase. 
+
+I then added to the helper class so now it calculates the ratings of the lifter and stores them in the redux. It then passes this information to the different progress bars.
+
+Finally, I ensured that the ratings are only calculated one the initial page render and is then stored locally if they leave and come back preventing unncessary API calls
+
+Week 12 -> 
+This week, I implemented skeleton loading for the necassary components which currently are analytics and search.
+
+I then implemented the search logic, to do this I added to the proxy server to collect the lifter and then formatted it to fit my UI
+
+I then allowed the user to update their firebase information via the analytics form which would also update redux and trigger a new rating calculation with the supplied data.
+
+Finally, I finished up a UI for the filters on the search page.
+
+Week 13 -> 
+This week I added the filter functionality to the search page, when doing this I also realised I could refactor a large section of the OpenAPI as I made it more efficient.
+
+To achieve this, I added to the BE so I can pass any parameters to it and it will always make the correct request, therefor cleaning up the FE a bit. This is espcially useful for filters as many combinations of filters can be applied.
+
+I spent a few hours fixing various bugs such as gender not being applied correctly and minor UI fixes.
+
+I then spent the rest of the week working on the single search, it now has a skeleton component for loading, allows the user to correctly search for a lifter then all the information is calculated and supplied to the graph UI component to show it in a visual way allowing easy visual comparison
+
+Week 14 -> 
+This week, I finished the main functionality of the project. This was the group comparison, it now takes the group input from the user and then goes away and searches for the lifters within that group and finds the average score.
+
+It then returns this to the FE to show visually. 
+
+Whilst doing this, I noticed a flaw in my design with the group compare graph. As the average always would be half the bar full, it does not show much to the user. To fix this I returned the actual value of the graph which the user can compare themselves against.
+
+As the main functionality is now done, next week I will be focussing on bug fixes, refactoring and security. If this turns out to be straight forward I will begin on a new feature.
+
+Week 15 -> 
+This week was focussed on refactoring, mainly around the BE and API section. Before I was manually setting the increment for the amount of data fetches from the database, however for every query there were different amount of lifters so the set increment became an issue and inaccurate. 
+
+The API response returns how many lifters are in that query, so I just used this and divided it by 10 to collect 10 even increments.
+
+I also removed some redundant functions that I no longer used.
+
+I then updated the age categories to match the database as they were slightly misaligned, for example I did not include age ranges from 40-70 but now do.
+
+Another big feature I added was the persistent redux store, this means now after page refreshes it does not wipe my state.
+
+I came across another intersting bug, in which on the API response the lifters sometimes do not have the age set instead I had to manually dig it out a bit. In short it could be stored in two different places in the response so I made sure to account for both.
+
+The rest of the week was just miscellaneous bug fixes. Next week I will be aiming to add in Next's server side rendering capabilities
+
+Week 16 -> 
+This week was looking into security and server side rendering. First off, I decided that I will not be using the server side capabilities, this is because SSR is mainly used for projects that use a CMS to collect data. My API calls are a few seconds which would result in a weird user experience
+
+I then spent a lot of time sanitising the user search and the input boxes using regular expressions. This was to prevent XSS and SQL injections, firebase would already handle most this through its own security however, it is good practise.
+
+The next security element was removing the exposed API keys from the project and using an env file to retrieve them.
+
+Finally, I added some UI elements for the loading spinner for unauthorised pages and authentication. This was mainly as a user that would not be logged in, could access a page via URL and could see the page briefly so I added the spinner to prevent that.

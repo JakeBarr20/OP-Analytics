@@ -1,0 +1,227 @@
+.compare-page {
+  position: relative;
+  height: 100%;
+
+  .compare-choice-container {
+    display: flex;
+    justify-content: space-evenly;
+    height: 80%;
+    margin-top: 90px;
+
+    hr {
+      margin: 0;
+      border-left: 1px solid $primary-red;
+    }
+
+    .compare-link {
+      margin-top: 165px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 400px;
+      height: 350px;
+      padding: 20px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.13);
+      border: 1px solid $grey;
+
+      &:hover {
+        box-shadow: 0px 0px 14px 6px $primary-red;
+        transform: scale(1.05);
+        transition: 0.5s;
+      }
+    }
+  }
+
+  .group-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    .selector-wrapper {
+      display: flex;
+
+      hr {
+        margin: 0;
+        margin-top: 100px;
+        border-right: 1px solid $primary-red;
+      }
+
+      .group-left-side {
+        min-width: 180px;
+        margin: 60px 0 0 10px;
+
+        h1 {
+          margin-top: 128px;
+
+          &.first {
+            margin-top: 60px !important;
+          }
+        }
+      }
+
+      .group-right-side {
+        width: 100%;
+
+        .group-row {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          margin-top: 90px;
+
+          .group-radio {
+            width: 80px;
+            height: 80px;
+            border-radius: 50px;
+            background-color: $white;
+            border: 1px solid $primary-red;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 40px;
+
+            &:hover {
+              background-color: $primary-red;
+
+              h1 {
+                color: $white;
+              }
+            }
+
+            &.selected {
+              background-color: $primary-red;
+
+              h1 {
+                color: $white;
+              }
+            }
+
+            h1 {
+              font-size: 32px;
+            }
+          }
+          button {
+            max-width: 300px;
+            margin: 10px 20px 0 auto;
+          }
+        }
+      }
+    }
+
+    .group-button-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: 80px;
+    }
+  }
+
+  .graph-component-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+
+    .quick-update-container {
+      display: flex;
+      justify-content: space-evenly;
+      margin-bottom: 20px;
+
+      .quick-update {
+        padding: 20px 10px 30px 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 370px;
+        border: 1px solid $grey;
+        border-radius: 8px;
+
+        h1 {
+          margin-top: 0;
+        }
+
+        button,
+        input {
+          max-width: unset;
+          width: 330px;
+        }
+
+        input {
+          margin-bottom: 25px;
+        }
+      }
+    }
+
+    .graph-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 150px;
+
+      .graph {
+        .graph-info {
+          display: flex;
+          justify-content: space-between;
+
+          .lifter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 120px;
+            height: 35px;
+            border-radius: 50px;
+            background-color: $primary-red;
+          }
+        }
+
+        .graph-content {
+          width: 850px;
+        }
+      }
+
+      .rating-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .rating-left,
+        .rating-right {
+          display: flex;
+          justify-content: space-between;
+          width: 40%;
+        }
+
+        p {
+          font-size: 26px;
+        }
+      }
+    }
+  }
+
+  .back-wrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    background-color: unset;
+    border: unset;
+    top: 10px;
+
+    p {
+      margin: 0;
+      font-size: 24px;
+    }
+  }
+
+  @media screen and (max-width: $tablet) {
+    .compare-choice-container {
+      flex-direction: column;
+      align-items: center;
+
+      hr {
+        display: none;
+      }
+
+      button {
+        margin-top: 62px !important;
+      }
+    }
+  }
+}
