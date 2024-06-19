@@ -83,3 +83,51 @@
     }
   }
 }
+
+@media screen and (max-width: $tablet){
+   .auth-input-container{
+      width: 480px !important;
+   } 
+}
+
+@media screen and (max-width: $phablet){
+    .auth-container{
+      flex-direction: column;
+      height: 100vh;
+
+      .auth-left-side{
+        padding: 0 0 80px 0;
+        width: 100%;
+
+        .auth-input-container{
+          width: 90% !important;
+        }
+
+        .primary-button{
+          width: 90%;
+        }
+
+
+      }
+
+      .auth-right-side{
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+
+        .secondary-button {
+          margin-bottom: 40px;
+        }
+      }
+    }
+}
+
+@media screen and (max-width: $mobile-large){
+  .form-container{
+    height: unset !important;
+  }
+}
+
+
+
