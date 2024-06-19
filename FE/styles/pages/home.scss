@@ -13,6 +13,7 @@
   .power-svg {
     margin-left: 55%;
   }
+
 }
 
 .home-link-container {
@@ -65,6 +66,14 @@
 }
 
 @media screen and (max-width: $tablet) {
+  .home-page-canvas{
+    align-items: center;
+
+    img{
+      margin-left: 0 !important;
+    }
+  }
+
   .home-link-container {
     flex-direction: column;
     align-items: center;
