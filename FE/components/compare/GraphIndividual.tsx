@@ -6,6 +6,7 @@ interface GraphIndividualProps {
   compareRating: number;
   lifterStat: string;
   isSingle: boolean;
+  isMobile: boolean;
 }
 
 const GraphIndividual: React.FC<GraphIndividualProps> = ({
@@ -14,8 +15,39 @@ const GraphIndividual: React.FC<GraphIndividualProps> = ({
   compareRating,
   lifterStat,
   isSingle,
+  isMobile,
 }) => {
-  // if (isSingle) compareRating = 50;
+  const IndividualCompareMobile = styled.div`
+    .graph-individual-mobile {
+      display: flex;
+      flex-direction: column;
+
+      .graph-top-mobile {
+        display: flex;
+
+        .graph-left-score-mobile {
+          height: 300px;
+          width: 40px;
+          background-color: #facfcf;
+          border-radius: 50px 50px 0 0;
+        }
+
+        .graph-right-score-mobile {
+          height: 300px;
+          width: 40px;
+          background-color: #ef303d;
+          border-radius: 50px 50px 0 0;
+        }
+      }
+
+      .graph-title-mobile {
+        display: flex;
+        justify-content: center;
+        border: 1px solid #ccd2e3;
+      }
+    }
+  `
+
   const IndvidualCompareGraph = styled.div`
     .graph-individual {
       display: flex;
@@ -94,27 +126,43 @@ const GraphIndividual: React.FC<GraphIndividualProps> = ({
   `;
 
   return (
-    <IndvidualCompareGraph>
-      <div className="graph-individual">
-        <div className="graph-left">
-          <div className="graph-left-score">
-            <span className="bebas-neue dark span-left">
-              {!isSingle && lifterStat + "KG"}
-            </span>
+    <>
+      {isMobile ? (
+        <IndividualCompareMobile>
+        <div className="graph-individual-mobile">
+          <div className="graph-top-mobile">
+            <div className="graph-left-score-mobile"></div>
+            <div className="graph-right-score-mobile"></div>
+          </div>
+          <div className="graph-title-mobile">
+            <span className="bebas-neue">{title}</span>
           </div>
         </div>
-        <div className="graph-center">
-          <p className="bebas-neue dark">{title}</p>
-        </div>
-        <div className="graph-right">
-          <div className="graph-right-score">
-            <span className="bebas-neue red span-right">
-              {!isSingle && Math.round(compareRating) + "KG"}
-            </span>
+        </IndividualCompareMobile>
+      ) : (
+        <IndvidualCompareGraph>
+          <div className="graph-individual">
+            <div className="graph-left">
+              <div className="graph-left-score">
+                <span className="bebas-neue dark span-left">
+                  {!isSingle && lifterStat + "KG"}
+                </span>
+              </div>
+            </div>
+            <div className="graph-center">
+              <p className="bebas-neue dark">{title}</p>
+            </div>
+            <div className="graph-right">
+              <div className="graph-right-score">
+                <span className="bebas-neue red span-right">
+                  {!isSingle && Math.round(compareRating) + "KG"}
+                </span>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </IndvidualCompareGraph>
+        </IndvidualCompareGraph>
+      )}
+    </>
   );
 };
 
