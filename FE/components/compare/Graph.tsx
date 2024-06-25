@@ -1,4 +1,5 @@
-import GraphIndividual from "./GraphIndividual";
+import GraphIndividual from "./GraphIndividual"
+import classNames from "classnames";
 import StarRating from "./StarRating";
 import Helper from "@/utils/Helper";
 import OpenAPI from "@/utils/OpenAPI";
@@ -12,6 +13,7 @@ const Graph: React.FC = () => {
   const [lifterRatings, setLifterRatings] = useState<any>([]);
   const [compareRatings, setCompareRatings] = useState<any>([]);
   const [loading, setLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(true);
 
   const calculateRatingsSingle = (lifterCalc: any, isUser: boolean) => {
     OpenAPI.getDataByAgeAndWeight(
@@ -76,7 +78,7 @@ const Graph: React.FC = () => {
           </p>
         </div>
       </div>
-      <div className="graph-content">
+      <div className={classNames("graph-content", {mobile: isMobile})}>
         {loading ? (
           <CompareSkeleton />
         ) : (
@@ -87,6 +89,7 @@ const Graph: React.FC = () => {
               compareRating={compareRatings.squat}
               lifterStat={lifter.squat}
               isSingle={compareLifter.isSingle}
+              isMobile={isMobile}
             />
             <GraphIndividual
               title="BENCH"
@@ -94,6 +97,7 @@ const Graph: React.FC = () => {
               compareRating={compareRatings.bench}
               lifterStat={lifter.bench}
               isSingle={compareLifter.isSingle}
+              isMobile={isMobile}
             />
             <GraphIndividual
               title="DEADLIFT"
@@ -101,12 +105,13 @@ const Graph: React.FC = () => {
               compareRating={compareRatings.deadlift}
               lifterStat={lifter.deadlift}
               isSingle={compareLifter.isSingle}
+              isMobile={isMobile}
             />
-            <StarRating
+            {/* <StarRating
               lifterRating={lifterRatings.overallPercentage}
               compareRating={compareRatings.overallPercentage}
               isSingle={compareLifter.isSingle}
-            />
+            /> */}
           </>
         )}
       </div>
