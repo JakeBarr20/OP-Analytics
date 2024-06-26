@@ -51,6 +51,19 @@ const Graph: React.FC = () => {
     );
   };
 
+  const onResize = () => {
+    setIsMobile(window.innerWidth <= 700);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", onResize);
+    onResize();
+
+    return () => {
+      window.removeEventListener("resize", onResize);
+    };
+  }, []);
+
   useEffect(() => {
     setLoading(true);
     if (compareLifter.isSingle) {
@@ -63,14 +76,14 @@ const Graph: React.FC = () => {
   }, [compareLifter]);
 
   return (
-    <div className="graph">
-      <div className="graph-info">
+    <div className={classNames("graph", {mobile: isMobile})}>
+      <div className={classNames("graph-info", {mobile: isMobile})}>
         <div className="lifter">
           <p className="bebas-neue white">
             {Helper.convertLifterToGraphHeader(lifter)}
           </p>
         </div>
-        <div className="lifter">
+        <div className="lifter other">
           <p className="bebas-neue white">
             {compareLifter.isSingle
               ? Helper.convertLifterToGraphHeader(compareLifter)
@@ -107,11 +120,12 @@ const Graph: React.FC = () => {
               isSingle={compareLifter.isSingle}
               isMobile={isMobile}
             />
-            {/* <StarRating
+            {!isMobile && 
+            <StarRating
               lifterRating={lifterRatings.overallPercentage}
               compareRating={compareRatings.overallPercentage}
               isSingle={compareLifter.isSingle}
-            /> */}
+            />}
           </>
         )}
       </div>
