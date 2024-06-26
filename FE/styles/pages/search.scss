@@ -170,6 +170,7 @@
 
       .info-container {
         width: 100%;
+        min-width: 500px;
         display: flex;
         background-color: $primary-red;
         justify-content: space-between;
@@ -194,6 +195,20 @@
           border: 1px solid $primary-red;
         }
       }
+    }
+  }
+
+  @media screen and (max-width: $tablet){
+    margin-left: 2%;
+    padding-top: 50px;
+
+    .search-bar{
+      width: 93% !important;
+    }
+    
+    .search-label,
+    .search-lifter{
+      width: 100% !important;
     }
   }
 }
