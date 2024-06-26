@@ -74,18 +74,18 @@
     }
   }
 
-  @media screen and (min-width: $mobile) {
+  @media screen and (min-width: 750px) {
     margin: 10px !important;
   }
 
-  @media screen and (max-width: $mobile) {
+  @media screen and (max-width: 750px) {
     margin: 0px !important;
   }
 
-  @media screen and (max-width: $mobile) {
+  @media screen and (max-width: 750px) {
     flex-direction: column-reverse;
     justify-content: space-between;
-    height: 107vh;
+    height: 100vh;
 
     .container-mobile {
       margin: 0 10px;
@@ -93,15 +93,26 @@
 
     .navbar-container {
       &.mobile {
+        position: fixed;
+        bottom: 0;
         border-top: 1px solid $grey;
-        height: 50px;
+        height: 60px;
         width: 100%;
+        background-color: $white;
+        z-index: 10;
+        padding: 20px 0 10px 0;
       }
 
       .nav-header {
         &.mobile {
           display: none;
         }
+      }
+
+      img,
+      .navbar-link-mobile{
+        height: 40px;
+        width: 40px;
       }
 
       .nav-content {

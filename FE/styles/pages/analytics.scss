@@ -2,6 +2,7 @@
   .analytics-header {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 
     h1 {
       font-family: ubuntu-bold;
@@ -102,6 +103,15 @@
   }
 }
 
+@media screen and (max-width: 1300px) {
+  .analytics-body-right{
+    h1 {
+      font-size: 30px !important;
+      margin-left: 15px !important;
+    }
+  }
+}
+
 @media screen and (max-width: $desktop-small) {
   .analytics-header {
     .profile {
@@ -124,5 +134,11 @@
     .analytics-body-right {
       margin-bottom: 50px;
     }
+  }
+}
+
+@media screen and (max-width: $phablet){
+  .form-container{
+    column-gap: 0 !important
   }
 }

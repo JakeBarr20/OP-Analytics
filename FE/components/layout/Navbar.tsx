@@ -22,7 +22,8 @@ function Navbar() {
   const dispatch = useAppDispatch();
 
   const onResize = () => {
-    setIsMobile(window.innerWidth <= 499);
+    console.log(window.innerWidth)
+    setIsMobile(window.innerWidth <= 750);
   };
 
   async function handleLogout() {
@@ -39,6 +40,8 @@ function Navbar() {
       window.removeEventListener("resize", onResize);
     };
   }, []);
+
+  console.log(isMobile)
 
   return (
     <div className={classNames("navbar-container", { mobile: isMobile })}>
@@ -58,7 +61,7 @@ function Navbar() {
         <NavbarLink icon={HomeIcon} text="Home" isMobile={isMobile} />
         <NavbarLink icon={SearchIcon} text="Search" isMobile={isMobile} />
         <NavbarLink icon={SettingIcon} text="Settings" isMobile={isMobile} />
-        <div className="navbar-link" onClick={handleLogout}>
+        <div className={classNames("navbar-link", {mobile: isMobile})} onClick={handleLogout}>
           <Image
             priority
             src={SignOutIcon}
@@ -66,7 +69,7 @@ function Navbar() {
             width={26}
             alt="navbarlink"
           />
-          <p className="poppins-medium grey">Logout</p>
+          {!isMobile && <p className="poppins-medium grey">Logout</p>}
         </div>
       </div>
     </div>
