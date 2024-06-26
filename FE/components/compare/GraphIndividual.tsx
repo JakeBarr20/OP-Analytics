@@ -24,18 +24,20 @@ const GraphIndividual: React.FC<GraphIndividualProps> = ({
 
       .graph-top-mobile {
         display: flex;
+        align-items: end;
+        height: 400px;
 
         .graph-left-score-mobile {
-          height: 300px;
+          height: ${lifterRating}%;
           width: 40px;
-          background-color: #facfcf;
+          background-color: #ef303d;
           border-radius: 50px 50px 0 0;
         }
 
         .graph-right-score-mobile {
-          height: 300px;
+          height: ${isSingle ? compareRating : 50}%;
           width: 40px;
-          background-color: #ef303d;
+          background-color: #AA3B3B;
           border-radius: 50px 50px 0 0;
         }
       }
@@ -99,7 +101,7 @@ const GraphIndividual: React.FC<GraphIndividualProps> = ({
         .graph-right-score {
           display: flex;
           align-items: center;
-          background-color: #ef303d;
+          background-color: #AA3B3B;
           width: ${isSingle ? compareRating : 50}%;
           height: 100%;
           border-radius: 0 25px 25px 0;
