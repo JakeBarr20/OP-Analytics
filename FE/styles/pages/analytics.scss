@@ -141,4 +141,27 @@
   .form-container{
     column-gap: 0 !important
   }
+
+  .arc-container{
+    padding-bottom: 100px;
+  }
+}
+
+@media screen and (max-width: $mobile){
+  .form-container{
+    max-height: 100% !important;
+
+    label {
+      width: 100% !important;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+
+      input, select {
+        margin-bottom: 0 !important;
+        margin-right: 20px;
+      }
+    }
+  }
 }
