@@ -8,16 +8,31 @@ import CIcon from "../../assets/pages/ComparisonHome.svg";
 import SIcon from "../../assets/pages/SearchHome.svg";
 import Loading from "@/components/loading/Loading";
 import { useAuthContext } from "@/context/AuthContext";
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react"; 
+import { useRouter } from "next/navigation" ;
 
 function HomePage() {
   const user: any = useAuthContext();
   const router = useRouter();
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     if (user.user == null) router.push("/landing");
   }, [user]);
+
+  const onResize = () => {
+    setIsMobile(window.innerWidth <= 525);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", onResize);
+    onResize();
+
+    return () => {
+      window.removeEventListener("resize", onResize);
+    };
+  }, []);
+
 
   const analyticsText =
     "In-depth analysis of your profile to find your strengths and weakness";
@@ -38,8 +53,8 @@ function HomePage() {
               priority
               src={OpenIcon}
               alt="Open"
-              width={500}
-              height={120}
+              width={isMobile ? 350 : 500}
+              height={isMobile ? 80 : 120} 
             />
             <Image
               className="power-svg"
