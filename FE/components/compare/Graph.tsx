@@ -14,6 +14,7 @@ const Graph: React.FC = () => {
   const [compareRatings, setCompareRatings] = useState<any>([]);
   const [loading, setLoading] = useState(true);
   const [isMobile, setIsMobile] = useState(true);
+  const [isTablet, setIsTablet] = useState(true);
 
   const calculateRatingsSingle = (lifterCalc: any, isUser: boolean) => {
     OpenAPI.getDataByAgeAndWeight(
@@ -53,6 +54,7 @@ const Graph: React.FC = () => {
 
   const onResize = () => {
     setIsMobile(window.innerWidth <= 700);
+    setIsTablet(window.innerWidth > 700 && window.innerWidth < 1000)
   };
 
   useEffect(() => {
@@ -97,7 +99,7 @@ const Graph: React.FC = () => {
         ) : (
           <>
             <GraphIndividual
-              title="SQUAT"
+              title={isTablet ? "S" : "SQUAT"} 
               lifterRating={lifterRatings.squat}
               compareRating={compareRatings.squat}
               lifterStat={lifter.squat}
@@ -105,7 +107,7 @@ const Graph: React.FC = () => {
               isMobile={isMobile}
             />
             <GraphIndividual
-              title="BENCH"
+              title={isTablet ? "B" : "BENCH"}
               lifterRating={lifterRatings.bench}
               compareRating={compareRatings.bench}
               lifterStat={lifter.bench}
@@ -113,7 +115,7 @@ const Graph: React.FC = () => {
               isMobile={isMobile}
             />
             <GraphIndividual
-              title="DEADLIFT"
+              title={isTablet ? "D" : "Deadlift"}
               lifterRating={lifterRatings.deadlift}
               compareRating={compareRatings.deadlift}
               lifterStat={lifter.deadlift}

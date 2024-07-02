@@ -232,10 +232,34 @@
     }
   }
 
+  @media screen and (max-width: $desktop-medium) {
+    .quick-update {
+      width: 220px !important;
+
+      input,button {
+        width: 200px !important;
+      }
+    }
+  }
+
+  @media screen and (max-width: 991px) and (min-width: 700px){
+    .graph-center {width: 86px !important}
+  }
+
+  @media screen and (max-width: 1140px) {
+    .graph-content {
+      width: 780px !important;
+    }
+  }
+
   @media screen and (max-width: $tablet) {
 
     .graph-container{
-      margin-top: 80px !important
+      margin-top: 80px !important;
+
+      .graph-content {
+        width: 680px !important;
+      }
     }
 
     .compare-choice-container {
