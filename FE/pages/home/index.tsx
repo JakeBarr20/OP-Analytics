@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Layout from "../../components/layout/Layout";
 import HomeLink from "../../components/layout/HomeLink";
-import OpenIcon from "../../assets/layout/Open.svg";
-import PowerliftingIcon from "../../assets/layout/Powerlifting-title.svg";
+import StrengthIcon from "../../assets/layout/StrengthIcon.png";
+import StatsIcon from "../../assets/layout/StatsIcon.png";
 import AIcon from "../../assets/pages/AnalysisHome.svg";
 import CIcon from "../../assets/pages/ComparisonHome.svg";
 import SIcon from "../../assets/pages/SearchHome.svg";
 import Loading from "@/components/loading/Loading";
+import Link from "next/link";
 import { useAuthContext } from "@/context/AuthContext";
 import { useEffect, useState } from "react"; 
 import { useRouter } from "next/navigation" ;
@@ -51,18 +52,18 @@ function HomePage() {
             <Image
               className="open-svg"
               priority
-              src={OpenIcon}
+              src={StrengthIcon}
               alt="Open"
               width={isMobile ? 350 : 500}
-              height={isMobile ? 80 : 120} 
+              height={isMobile ? 80 : 125} 
             />
             <Image
               className="power-svg"
               priority
-              src={PowerliftingIcon}
+              src={StatsIcon}
               alt="Power"
-              width={300}
-              height={30}
+              width={375}
+              height={125}
             />
           </div>
           <Layout hide>
@@ -89,6 +90,14 @@ function HomePage() {
                 w={165}
               />
             </div>
+            <div className="credit bebas-neue red">
+              <a target="_blank" href="https://www.linkedin.com/in/jake-biddiscombe-barr-b63416215/">
+                <p>Created By - Jake Biddiscombe-Barr</p>
+              </a> 
+             <a target="_blank" href="https://www.openpowerlifting.org">
+                <p>Data From - Open Powerlifting</p>
+             </a>
+           </div>
           </Layout>
         </>
       )}

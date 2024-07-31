@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import OpenIcon from "../../assets/layout/Open.svg";
-import PowerliftingIcon from "../../assets/layout/Powerlifting-title.svg";
+import StengthIcon from "../../assets/layout/StrengthIcon.png";
+import StatsIcon from "../../assets/layout/StatsIcon.png";
 
 function LandingPage() {
   return (
@@ -10,18 +10,18 @@ function LandingPage() {
         <Image
           className="open-svg"
           priority
-          src={OpenIcon}
+          src={StengthIcon}
           alt="Open"
           width={500}
-          height={120}
+          height={125}
         />
         <Image
           className="power-svg"
           priority
-          src={PowerliftingIcon}
+          src={StatsIcon}
           alt="Power"
-          width={300}
-          height={30}
+          width={375}
+          height={125}
         />
       </div>
       <div className="landing-button-container">
@@ -35,6 +35,14 @@ function LandingPage() {
             Sign Up
           </button>
         </Link>
+      </div>
+      <div className="credit bebas-neue red">
+        <a target="_blank" href="https://www.linkedin.com/in/jake-biddiscombe-barr-b63416215/">
+          <p>Created By - Jake Biddiscombe-Barr</p>
+        </a>
+        <a target="_blank" href="https://www.openpowerlifting.org">
+          <p>Data From - Open Powerlifting</p>
+        </a>
       </div>
     </>
   );
