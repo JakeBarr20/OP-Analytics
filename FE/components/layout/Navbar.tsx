@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import classNames from "classnames";
 import Image from "next/image";
 import NavbarLink from "./NavbarLink";
-import OpenIcon from "../../assets/layout/Open.svg";
-import PowerliftingIcon from "../../assets/layout/Powerlifting-title.svg";
+import StengthIcon from "../../assets/layout/StrengthIcon.png";
+import StatsIcon from "../../assets/layout/StatsIcon.png";
 import ProfileIcon from "../../assets/layout/Profile.svg";
 import CompareIcon from "../../assets/layout/Compare.svg";
 import SearchIcon from "../../assets/layout/Search.svg";
@@ -46,13 +46,13 @@ function Navbar() {
   return (
     <div className={classNames("navbar-container", { mobile: isMobile })}>
       <div className={classNames("nav-header", { mobile: isMobile })}>
-        <Image priority src={OpenIcon} alt="Open" width={167} height={37} />
+        <Image priority src={StengthIcon} alt="Open" width={180} height={40} />
         <Image
           priority
-          src={PowerliftingIcon}
+          src={StatsIcon}
           alt="Power"
-          width={158}
-          height={16}
+          width={160}
+          height={40}
         />
       </div>
       <div className={classNames("nav-content", { mobile: isMobile })}>
