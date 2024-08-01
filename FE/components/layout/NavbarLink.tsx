@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 interface NavbarLinkProps {
-  icon: string;
+  icon: any;
   text: string;
   isMobile: boolean;
   logout?: boolean;
