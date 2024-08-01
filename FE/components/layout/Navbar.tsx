@@ -41,8 +41,6 @@ function Navbar() {
     };
   }, []);
 
-  console.log(isMobile)
-
   return (
     <div className={classNames("navbar-container", { mobile: isMobile })}>
       <div className={classNames("nav-header", { mobile: isMobile })}>
