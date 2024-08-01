@@ -10,6 +10,13 @@ import SearchIcon from "../../assets/layout/Search.svg";
 import HomeIcon from "../../assets/layout/Home.svg";
 import SettingIcon from "../../assets/layout/Settings.svg";
 import SignOutIcon from "../../assets/layout/SignOut.svg";
+import InstaIcon from "../../assets/layout/InstaIcon.png";
+import XIcon from "../../assets/layout/XIcon.png";
+import LinkedIcon from "../../assets/layout/LinkedIcon.png";
+import DiscordIcon from "../../assets/layout/DiscordIcon.png";
+import TermsIcon from "../../assets/layout/TermsIcon.png";
+import ReportIcon from "../../assets/layout/ReportIcon.png";
+import PrivacyIcon from "../../assets/layout/PrivacyIcon.png";
 import { signOut, getAuth } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/reducer/Hooks";
@@ -68,6 +75,47 @@ function Navbar() {
             alt="navbarlink"
           />
           {!isMobile && <p className="poppins-medium grey">Logout</p>}
+        </div>
+      </div>
+      <div className="nav-content-bottom">
+        <p className="poppins-medium grey">Created By -</p>
+        <p className="poppins-medium grey">Jake Biddiscombe-Barr</p>
+        <p className="poppins-medium grey">Data From -</p>
+        <p className="poppins-medium grey">Open Powerlifting</p>
+        <div className="socials-wrapper">
+          <Image
+              priority
+              src={InstaIcon}
+              height={26}
+              width={26}
+              alt="Insta"
+            />
+          <Image
+              priority
+              src={XIcon}
+              height={26}
+              width={26}
+              alt="X"
+            />
+          <Image
+              priority
+              src={LinkedIcon}
+              height={26}
+              width={26}
+              alt="Insta"
+            />
+          <Image
+              priority
+              src={DiscordIcon}
+              height={26}
+              width={26}
+              alt="Insta"
+            />
+        </div>
+        <div className="final-content">
+          <NavbarLink icon={ReportIcon} text="Report Bugs" isMobile={isMobile} />
+          <NavbarLink icon={TermsIcon} text="Terms and Conditions" isMobile={isMobile} />
+          <NavbarLink icon={PrivacyIcon} text="Privacy Policy" isMobile={isMobile} />
         </div>
       </div>
     </div>
