@@ -36,14 +36,6 @@ function LandingPage() {
           </button>
         </Link>
       </div>
-      <div className="credit bebas-neue red">
-        <a target="_blank" href="https://www.linkedin.com/in/jake-biddiscombe-barr-b63416215/">
-          <p>Created By - Jake Biddiscombe-Barr</p>
-        </a>
-        <a target="_blank" href="https://www.openpowerlifting.org">
-          <p>Data From - Open Powerlifting</p>
-        </a>
-      </div>
     </>
   );
 }
