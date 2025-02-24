@@ -60,7 +60,8 @@ function Navbar() {
           height={40}
         />
       </div>
-      <div className={classNames("nav-content", { mobile: isMobile })}>
+      <div className="nav-content">
+      <div className={classNames("nav-content-top", { mobile: isMobile })}>
         <NavbarLink icon={ProfileIcon} text="Analytics" isMobile={isMobile} />
         <NavbarLink icon={CompareIcon} text="Compare" isMobile={isMobile} />
         <NavbarLink icon={HomeIcon} text="Home" isMobile={isMobile} />
@@ -70,8 +71,8 @@ function Navbar() {
           <Image
             priority
             src={SignOutIcon}
-            height={26}
-            width={26}
+            height={20}
+            width={20}
             alt="navbarlink"
           />
           {!isMobile && <p className="poppins-medium grey">Logout</p>}
@@ -118,6 +119,8 @@ function Navbar() {
           <NavbarLink icon={PrivacyIcon} text="Privacy Policy" isMobile={isMobile} />
         </div>
       </div>
+      </div>
+     
     </div>
   );
 }
