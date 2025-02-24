@@ -27,13 +27,14 @@
       text-decoration: none;
     }
 
-    .nav-content {
       display: flex;
       flex-direction: column;
       gap: 26px;
 
       .navbar-link {
         display: flex;
+        margin-bottom: 10px;
+        align-items: center;
 
         &:hover {
           img {
@@ -48,7 +49,7 @@
         }
 
         p {
-          margin: 0 0 0 27px;
+          margin: 0 0 0 10px;
           display: flex;
           align-items: center;
         }
@@ -71,18 +72,19 @@
           }
         }
       }
-    }
+    
 
     .nav-content-bottom{
 
       p{
-        font-size: 14px;
+        font-size: 12px;
         margin-block: 2px;
       }
 
-      .socials-container{
+      .socials-wrapper{
         display: flex;
         justify-content: space-between;
+        margin: 15px 0 15px 0;
       }
     }
   }
@@ -128,7 +130,7 @@
         width: 40px;
       }
 
-      .nav-content {
+      .nav-content-top {
         &.mobile {
           flex-direction: row;
           justify-content: space-evenly;

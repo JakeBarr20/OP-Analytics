@@ -12,7 +12,7 @@ const NavbarLink: React.FC<NavbarLinkProps> = ({ icon, text, isMobile }) => {
   return !isMobile ? (
     <Link href={`/${text.toLowerCase()}`}>
       <div className="navbar-link">
-        <Image priority src={icon} height={26} width={26} alt="navbarlink" />
+        <Image priority src={icon} height={20} width={20} alt="navbarlink" />
         <p className="poppins-medium grey">{text}</p>
       </div>
     </Link>
