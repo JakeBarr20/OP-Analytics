@@ -43,27 +43,32 @@ function AnalyticsPage() {
     if (user.user == null) router.push("/landing");
   }, [user]);
 
-  const calculateRatings = (lifterCalc: any, updated: boolean) => {
+  const calculateRatings = async(lifterCalc: any, updated: boolean) => {
+
+
     if (!lifterCalc?.rating?.ratingCalculated || updated) {
       setLoading(true);
-      OpenAPI.getDataByAgeAndWeight(
-        Helper.convertWeightToCategory(
-          Number(lifterCalc.weight),
-          lifterCalc.gender
-        ).slice(1),
-        Helper.convertAgeToCategory(Number(lifterCalc.age)),
-        lifterCalc.gender
-      ).then((res) => {
-        const formattedRatings = Helper.convertResponseToAverages(
-          lifterCalc,
-          res
-        );
-        setLifterRatings(formattedRatings);
-        dispatch(
-          updateLifter({ ratings: formattedRatings, ratingCalculated: true })
-        );
-        setLoading(false);
-      });
+      const body = {gender: lifterCalc.gender, weight: lifterCalc.weight, age: lifterCalc.age}
+      const response = await OpenAPI.getDataByFilters(body, false)
+
+      // OpenAPI.getDataByFilters(
+      //   Helper.convertWeightToCategory(
+      //     Number(lifterCalc.weight),
+      //     lifterCalc.gender
+      //   ).slice(1),
+      //   Helper.convertAgeToCategory(Number(lifterCalc.age)),
+      //   lifterCalc.gender
+      // ).then((res) => {
+      //   const formattedRatings = Helper.convertResponseToAverages(
+      //     lifterCalc,
+      //     res
+      //   );
+      //   setLifterRatings(formattedRatings);
+      //   dispatch(
+      //     updateLifter({ ratings: formattedRatings, ratingCalculated: true })
+      //   );
+      //   setLoading(false);
+      // });
     } else {
       setLifterRatings(lifterCalc.rating);
     }
