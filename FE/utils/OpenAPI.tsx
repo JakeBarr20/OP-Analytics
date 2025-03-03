@@ -36,79 +36,55 @@ class OpenAPI {
     return data;
   };
 
-  static GetDataByFilters = async (filters: any, recursive: boolean) => {
+  static getDataByFilters = async (filters: any, recursive: boolean) => {
     const { gender, weight, age } = Helper.convertFiltersToStats(filters);
 
-    let rows = { rows: "" };
-    if (recursive) {
-      return this.handleRequest(
-        "http://localhost:3000/data-by-filters",
-        weight,
-        age,
-        gender
-      );
-    } else {
-      const response = await fetch("http://localhost:3000/data-by-filters", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ w: weight, s: 0, a: age, g: gender }),
-      });
-      rows = await response.json();
-      return rows.rows;
-    }
-  };
+    const response = await fetch("http://127.0.0.1:8000/data-by-filters", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        w: weight,
+        a: age,
+        gender: gender
+      })
+    })
 
-  static getDataByAgeAndWeight = (
-    weight: string,
-    age: string,
-    gender: string
-  ) => {
-    let requestAge = "";
-    let requestGender = "";
-    if (age === "SBJ") requestAge = "18-19";
-    if (age === "JR") requestAge = "20-23";
-    if (age === "OP") requestAge = "24-34";
-    if (age === "MA1") requestAge = "40-49";
-    if (age === "MA2") requestAge = "50-59";
-    if (age === "MA3") requestAge = "60-69";
-    if (age === "MA4") requestAge = "over70";
-    if (gender === "Male") requestGender = "men";
-    if (gender === "Female") requestGender = "women";
+    const responseJson = await response.json()
+    console.log(response)
 
-    return this.handleRequest(
-      "http://localhost:3000/data-by-weight-age-give-value",
-      weight,
-      requestAge,
-      requestGender
-    );
+    // let rows = { rows: "" };
+    // if (recursive) {
+    //   return this.handleRequest(
+    //     "http://127.0.0.1:8000/data-by-filters",
+    //     weight,
+    //     age,
+    //     gender
+    //   );
+    // } else {
+    //   const response = await fetch("http://127.0.0.1:8000/data-by-filters", {
+    //     method: "POST",
+    //     headers: {
+    //       Accept: "application/json",
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({ w: weight, s: 0, a: age, g: gender }),
+    //   });
+    //   rows = await response.json();
+    //   return rows.rows;
+    // }
   };
 
   static getDataByName = async (name: string) => {
-    const indexReponse = await fetch("http://localhost:3000/index-by-name", {
-      method: "POST",
+    const indexReponse = await fetch(`http://127.0.0.1:8000/data-by-name/${name}`, {
+      method: "GET",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ n: name }),
     });
     const index = await indexReponse.json();
-
-    if (index.next_index === null) return null;
-
-    const lifterResponse = await fetch("http://localhost:3000/data-by-index", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ i: index.next_index.toString() }),
-    });
-    const data = await lifterResponse.json();
-    return data.rows[0];
+    return index
   };
 }
 

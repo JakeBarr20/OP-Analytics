@@ -29,7 +29,6 @@ function Navbar() {
   const dispatch = useAppDispatch();
 
   const onResize = () => {
-    console.log(window.innerWidth)
     setIsMobile(window.innerWidth <= 750);
   };
 
