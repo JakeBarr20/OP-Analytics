@@ -1,16 +1,16 @@
 import pandas as pd
 
-df = pd.read_csv('openipf.csv')
+df = pd.read_csv('raw.csv')
 
-#remove columns
 columns_to_keep = ['Name', 'Sex', 'Event', 'Equipment', 'Age', 'AgeClass', 'Division', 'BodyweightKg', 'WeightClassKg', 'Best3SquatKg', 'Best3BenchKg', 'Best3DeadliftKg', 'TotalKg']
 df_filtered = df[columns_to_keep]
-cleaned_df = df_filtered.dropna()
-print('Completed column removal...')
-cleaned_df.to_csv('removed_columns.csv', index=False)
 
-#group by name
-grouped_by_name = df_filtered.groupby('Name')
+df_filtered_cleaned = df_filtered.dropna(subset=['Age', 'BodyweightKg'])
+
+print('Completed column removal and cleaned data...')
+
+df_filtered_cleaned.to_csv('removed_columns.csv', index=False)
+grouped_by_name = df_filtered_cleaned.groupby('Name')
 
 def get_best_lifts(group):
     best_squat = group['Best3SquatKg'].max()  
@@ -24,5 +24,6 @@ def get_best_lifts(group):
     return best_lifts
 
 best_lifts_df = grouped_by_name.apply(get_best_lifts).reset_index(drop=True)
-print('Completed grouping...')
+
+print('Completed grouping and best lifts calculation...')
 best_lifts_df.to_csv('best_lifts.csv', index=False)

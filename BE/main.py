@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from funcs import get_powerlifting_age_bracket, get_powerlifting_weight_class
 import pandas as pd
 
 app = FastAPI()
@@ -29,14 +30,26 @@ class FilterRequest(BaseModel):
 async def data_by_filters(filters: FilterRequest):
     weight_filter = filters.w
     age_filter = filters.a
-    gender_filter = filters.g
+    gender_filter = filters.g[0]
+
+    age_class = get_powerlifting_age_bracket(age_filter)
+    weight_class = get_powerlifting_weight_class(weight_filter, gender_filter)
+
+
+    if age_class is None:
+        return JSONResponse(content={"error": "Age not eligible"}, status_code=400)
+    
+    if weight_class is None:
+        return JSONResponse(content={"error": "Weight not eligible"}, status_code=400)
 
     filtered_df = df[
-        (df['BodyweightKg'] == weight_filter) & 
-        (df['Age'] == age_filter) & 
+        (df['BodyweightKg'].astype(float) > weight_class["s"]) & 
+        (df['BodyweightKg'].astype(float) < weight_class["e"]) &
+        (df['Age'].astype(float) > age_class["s"]) & 
+        (df['Age'].astype(float) < age_class["e"]) & 
         (df['Sex'] == gender_filter)
     ]
-    
+
     filtered_data = filtered_df.to_dict(orient="records")
     return JSONResponse(content={"rows": filtered_data})
 

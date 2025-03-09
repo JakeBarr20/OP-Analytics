@@ -44,12 +44,19 @@ function AnalyticsPage() {
   }, [user]);
 
   const calculateRatings = async(lifterCalc: any, updated: boolean) => {
-
+      setLoading(true);
+      const body = {gender: lifterCalc.gender, weight: Number(lifterCalc.weight), age: Number(lifterCalc.age)}
+      const response = await OpenAPI.getDataByFilters(body, false)
+      console.log(body)
+      setLoading(false)
 
     if (!lifterCalc?.rating?.ratingCalculated || updated) {
-      setLoading(true);
-      const body = {gender: lifterCalc.gender, weight: lifterCalc.weight, age: lifterCalc.age}
-      const response = await OpenAPI.getDataByFilters(body, false)
+      // setLoading(true);
+      // const body = {gender: lifterCalc.gender, weight: lifterCalc.weight, age: lifterCalc.age}
+      // const response = await OpenAPI.getDataByFilters(body, false)
+      // setLoading(false)
+
+
 
       // OpenAPI.getDataByFilters(
       //   Helper.convertWeightToCategory(

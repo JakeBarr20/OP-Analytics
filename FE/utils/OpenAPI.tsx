@@ -1,4 +1,6 @@
 import Helper from "./Helper";
+import axios from "axios";
+
 
 class OpenAPI {
   static handleRequest = async (header: string, w: any, a: any, g: any) => {
@@ -37,22 +39,20 @@ class OpenAPI {
   };
 
   static getDataByFilters = async (filters: any, recursive: boolean) => {
-    const { gender, weight, age } = Helper.convertFiltersToStats(filters);
+    const { gender, weight, age } = filters;
 
-    const response = await fetch("http://127.0.0.1:8000/data-by-filters", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
+    const response = await axios.post("http://127.0.0.1:8000/data-by-filters", {
         w: weight,
         a: age,
-        gender: gender
-      })
-    })
+        g: gender
+    }, {
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        }
+    });
 
-    const responseJson = await response.json()
-    console.log(response)
+    return response.data; 
 
     // let rows = { rows: "" };
     // if (recursive) {
@@ -77,15 +77,14 @@ class OpenAPI {
   };
 
   static getDataByName = async (name: string) => {
-    const indexReponse = await fetch(`http://127.0.0.1:8000/data-by-name/${name}`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-      },
+    const response = await axios.get(`http://127.0.0.1:8000/data-by-name/${name}`, {
+        headers: {
+            Accept: "application/json",
+        },
     });
-    const index = await indexReponse.json();
-    return index
-  };
+
+    return response.data; 
+};
 }
 
 export default OpenAPI;
